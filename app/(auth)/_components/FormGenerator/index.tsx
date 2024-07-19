@@ -8,7 +8,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import Textarea from "react-textarea-autosize";
 
 interface FormGeneratorProps {
-  id: string;
+  id?: string;
   type: "email" | "text" | "password";
   inputType: "select" | "input" | "textarea";
   options?: { value: string; label: string; id: string }[];
