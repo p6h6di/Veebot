@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { SIDE_BAR_MENU } from "@/constants/menu";
 import { MonitorSmartphone } from "lucide-react";
@@ -23,7 +21,7 @@ interface MaxMenuProps {
 
 const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaxMenuProps) => {
   return (
-    <div className="flex h-full flex-col px-4 py-3">
+    <div className="flex h-full flex-col p-3 px-4">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold">LOG</h1>
         <Icons.menu_logo

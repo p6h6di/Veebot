@@ -82,7 +82,10 @@ const FormGenerator = ({
       );
     case "textarea":
       return (
-        <Label htmlFor={`input-${label}`} className="flex flex-col gap-2">
+        <Label
+          htmlFor={`input-${label}`}
+          className="flex flex-col gap-2 rounded-md border p-4"
+        >
           {label && label}
           <Textarea
             form={form}

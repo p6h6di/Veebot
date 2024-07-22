@@ -29,8 +29,8 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
       <div className="flex w-full items-center justify-between">
         {!min && <p className="text-xs text-gray-500">DOMAINS</p>}
         <DomainDrawer
+          description="add in your domain address to integrate your chatbot"
           title="Add your business domain"
-          description="add in your domain address  to integrate your chatbot"
           onOpen={
             <div className="cursor-pointer rounded-full border-2 text-gray-500">
               <Plus />
@@ -51,13 +51,11 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
                 placeholder="mydomain.com"
                 type="text"
               />
-
               <UploadButton
                 register={register}
                 label="Upload Icon"
                 errors={errors}
               />
-
               <Button type="submit" className="w-full">
                 Add Domain
               </Button>
@@ -65,21 +63,20 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
           </Loader>
         </DomainDrawer>
       </div>
-
       <div className="flex flex-col gap-1 font-medium text-zinc-700">
-        {Array.isArray(domains) &&
+        {domains &&
           domains.map((domain) => (
             <Link
               href={`/settings/${domain.name.split(".")[0]}`}
               key={domain.id}
               className={cn(
-                "flex gap-3 items-center hover:bg-white rounded-lg transition duration-100 ease-in-out cursor-pointer",
+                "flex gap-3 hover:bg-white rounded-full transition duration-100 ease-in-out cursor-pointer ",
                 !min ? "p-2" : "py-2",
                 domain.name.split(".")[0] === isDomain && "bg-white"
               )}
             >
               <Image
-                src={`https://ucarecdn.com/${domain.icon}`}
+                src={`https://ucarecdn.com/${domain.icon}/`}
                 alt="logo"
                 width={20}
                 height={20}

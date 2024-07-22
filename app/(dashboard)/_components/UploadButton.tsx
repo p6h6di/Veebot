@@ -17,7 +17,7 @@ const UploadButton = ({ errors, label, register }: UploadButtonProps) => {
       <div className="flex items-center gap-2">
         <Label
           htmlFor="upload-button"
-          className="flex cursor-pointer items-center gap-2 rounded-lg bg-white/80 p-3 text-sm font-semibold text-gray-600"
+          className="flex cursor-pointer items-center gap-2 rounded-lg bg-muted p-3 text-sm font-semibold text-gray-600"
         >
           <Input
             {...register("image")}
@@ -28,8 +28,8 @@ const UploadButton = ({ errors, label, register }: UploadButtonProps) => {
           <Edit />
           {label}
         </Label>
-        <p className="ml-6 text-sm text-gray-600">
-          Recommended size is 300px * 300px, size <br /> less then 2MB
+        <p className="ml-6 text-sm text-gray-400">
+          Recommended size is 300px * 300px, <br /> size less than 2MB
         </p>
       </div>
       <ErrorMessage

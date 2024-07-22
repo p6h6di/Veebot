@@ -1,14 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Josefin_Sans as Josefin } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
-const poppins = Poppins({
+const poppins = Josefin({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

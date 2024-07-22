@@ -1,11 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { onIntegrateDomain } from "@/actions/settings";
 import { AddDomainSchema } from "@/schemas/settings.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UploadClient } from "@uploadcare/upload-client";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -13,10 +13,6 @@ const upload = new UploadClient({
   publicKey: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY as string,
 });
 
-/**
- * Custom hook for managing domain-related functionality.
- * Uses form validation, file upload, domain integration, and toast notifications.
- */
 export const useDomain = () => {
   const {
     register,
@@ -28,22 +24,19 @@ export const useDomain = () => {
   });
 
   const pathname = usePathname();
-  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [isDomain, setIsDomain] = useState<string | undefined>(undefined);
+  const router = useRouter();
 
   useEffect(() => {
     setIsDomain(pathname.split("/").pop());
   }, [pathname]);
 
-  /**
-   * Handles the submission of domain data.
-   * Sets loading state, uploads a file, integrates domain, resets form, displays toast messages, and refreshes the router.
-   */
   const onAddDomain = handleSubmit(async (values: FieldValues) => {
     setLoading(true);
-    const uploaded = await upload.uploadFile(values.images[0]);
+    const uploaded = await upload.uploadFile(values.image[0]);
     const domain = await onIntegrateDomain(values.domain, uploaded.uuid);
+    // const domain = JSON.parse(JSON.stringify(data));
     if (domain) {
       reset();
       setLoading(false);
@@ -62,9 +55,9 @@ export const useDomain = () => {
 
   return {
     register,
-    loading,
-    errors,
     onAddDomain,
+    errors,
+    loading,
     isDomain,
   };
 };
